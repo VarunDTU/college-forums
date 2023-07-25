@@ -22,7 +22,7 @@ export default function Navbar() {
       <div className="flex">
         <Link
           href={{ pathname: "/" }}
-          className="btn btn-ghost normal-case text-xl"
+          className="btn btn-ghost normal-case text-md md:text-xl"
         >
           Student Forums
         </Link>

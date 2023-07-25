@@ -50,7 +50,7 @@ export default function Home() {
     <div className="py-20 flex flex-col ">
   
       <div className="flex flex-col w-full lg:flex-row h-screen">
-        <div className=" sm:w-full md:w-2/3 md:mr-10 m-4  place-items-center">
+        <div className=" sm:w-full  p-4  place-items-center">
           <h1 className="p-5 m-2 w-full items-center justify-center flex text-3xl p">
             Top Threads
           </h1>
@@ -84,7 +84,7 @@ export default function Home() {
             })}
           </div>
         </div>
-        <div className="rounded-box place-items-center md:w-1/3 md:ml-10 m-4 ">
+        <div className="rounded-box place-items-center md:w-1/4 p-4 w-full">
           <h1 className="p-5 m-2 w-full items-center justify-center flex text-3xl p">
             Recent Threads
           </h1>

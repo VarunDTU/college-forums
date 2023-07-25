@@ -32,7 +32,7 @@ export default function SearchBar(props) {
           className="btn"
           onClick={() => document.getElementById("my_modal_1").showModal()}
         >
-          Create Post
+          New Post
         </button>
         <dialog id="my_modal_1" className="modal">
           <form method="dialog" className="modal-box">

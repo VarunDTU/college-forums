@@ -1,14 +1,17 @@
+import { useState } from "react";
 import Newpost from "../../newpost/newpost";
 
-export default function SearchBar() {
+export default function SearchBar(props) {
+
+  
   return (
-    <div className="flex flex-row  justify-evenly ">
+    <div className={`flex  ${props.small?'flex-col':'flex-row'} justify-evenly`}>
       <div class="flex items-center justify-center">
         <div class="flex border-2 rounded">
-          <input type="text" class="px-4 py-2 w-80" placeholder="Search..." />
+          <input type="text" class={`px-4 py-2 ${props.small?'w-20':'w-50'}`} placeholder="Search..." />
           <button class="flex items-center justify-center px-4 border-l">
             <svg
-              class="w-6 h-6 text-gray-600"
+              class="w-3 h-3 text-gray-600"
               fill="currentColor"
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
@@ -19,7 +22,7 @@ export default function SearchBar() {
         </div>
       </div>
       <div>
-        <button className="btn" onClick={() => window.my_modal_1.showModal()}>
+        <button className="btn" onClick={() => document.getElementById("my_modal_1").showModal()}>
           Create Post
         </button>
         <dialog id="my_modal_1" className="modal">

@@ -24,6 +24,7 @@ export default function Newpost() {
         userProfile: user.photoURL,
         title: title,
         time: time,
+        postComments:[]
       });
       await setDoc(doc(db, "posts", docRef.id), {
         likes: "0",
@@ -48,7 +49,7 @@ export default function Newpost() {
         className="textarea textarea-bordered textarea-lg w-full"
         onChange={(e) => setContent(e.target.value)}
       ></textarea>
-      <button className="p-5 m-5 hover:border hover:border-spacing-8 transition-all focus:bg-white focus:text-black " onClick={NewThread}>Submit</button>
+      <button className="p-5 m-5 border border-transparent hover:border hover:border-white hover:border-spacing-8 transition-all focus:bg-white focus:text-black bg-gray-800 rounded" onClick={NewThread}>Submit</button>
     </div>
   );
 }

@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react";
 import { initfirebase, initfirestore } from "./firebase/auth";
 import { BsSearch } from "react-icons/bs";
+import { BiUpvote, BiSolidUpvote } from "react-icons/bi";
 import Link from "next/link";
 import {
   querySnapshot,
@@ -12,6 +13,7 @@ import {
   orderBy,
   limit,
 } from "firebase/firestore";
+import SearchBar from "./components/search/searchBar";
 
 export default function Home() {
   initfirebase();
@@ -19,8 +21,8 @@ export default function Home() {
   const [items, setitems] = useState([]);
   const [itemsS, setitemsS] = useState([]);
   useEffect(() => {
-    const q = query(collection(db, "posts"),orderBy("likes"));
-    const qS = query(collection(db, "posts"),orderBy("time"));
+    const q = query(collection(db, "posts"), orderBy("likes"));
+    const qS = query(collection(db, "posts"), orderBy("time"));
     const posts = onSnapshot(q, (querySnapshot) => {
       let arr = [];
       querySnapshot.forEach((doc) => {
@@ -36,7 +38,13 @@ export default function Home() {
       setitemsS(arr);
     });
   }, []);
-
+  const [upvotes, Setvotes] = useState(false);
+  const upvoted = () => {
+    Setvotes(true);
+  };
+  const downvoted = () => {
+    Setvotes(false);
+  };
   return (
     <div className="py-20 flex flex-col ">
       <div className="flex flex-col w-full lg:flex-row h-screen">
@@ -47,7 +55,25 @@ export default function Home() {
           <div className=" h-full card bg-base-300 ">
             {items.map((post) => {
               return (
-                <div className="text-left w-full p-2 hover:bg-slate-700 hover:rounded-box ">
+                <div className="text-left w-full p-2 hover:bg-slate-700 hover:rounded-box flex flex-row items-center transition-all ">
+                  {/* <div className=" flex flex-col items-center">
+                    {!upvotes ? (
+                      <BiUpvote
+                        size={20}
+                        className="m-2"
+                        onClick={upvoted}
+                      ></BiUpvote>
+                    ) : (
+                      <BiSolidUpvote
+                        size={20}
+                        className="m-2"
+                        onClick={downvoted}
+                      ></BiSolidUpvote>
+                    )}
+
+                    <div>{post.likes}</div>
+                  </div> */}
+
                   <Link href={{ pathname: `/posts/post/${post.id}` }}>
                     {post.title}
                   </Link>
@@ -63,7 +89,7 @@ export default function Home() {
           <div className="  h-full card bg-base-300 place-items-center ">
             {itemsS.map((post) => {
               return (
-                <div className="text-left w-full p-2 hover:bg-slate-700 hover:rounded-box justify-center flex">
+                <div className="text-left w-full p-2 hover:bg-slate-700 hover:rounded-box justify-center flex  transition-all ">
                   <Link href={{ pathname: `/posts/post/${post.id}` }}>
                     {post.title}
                   </Link>

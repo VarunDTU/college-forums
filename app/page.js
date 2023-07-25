@@ -14,6 +14,7 @@ import {
   limit,
 } from "firebase/firestore";
 import SearchBar from "./components/search/searchBar";
+import Newpost from "./newpost/newpost";
 
 export default function Home() {
   initfirebase();
@@ -47,6 +48,7 @@ export default function Home() {
   };
   return (
     <div className="py-20 flex flex-col ">
+  
       <div className="flex flex-col w-full lg:flex-row h-screen">
         <div className=" sm:w-full md:w-2/3 md:mr-10 m-4  place-items-center">
           <h1 className="p-5 m-2 w-full items-center justify-center flex text-3xl p">

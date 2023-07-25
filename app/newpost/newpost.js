@@ -1,3 +1,5 @@
+"use client";
+
 import { getAuth } from "firebase/auth";
 import { addDoc, collection, setDoc, doc } from "firebase/firestore";
 import { useEffect, useState } from "react";
@@ -14,8 +16,8 @@ export default function Newpost() {
   const [user, loading] = useAuthState(auth);
   const NewThread = async () => {
     if (title != "" && content != "") {
-      const c_time =new Date();
-      const time=c_time.toString()
+      const c_time = new Date();
+      const time = c_time.toString();
       const docRef = await addDoc(collection(db, "post"), {
         username: user.displayName,
         likes: "0",
@@ -24,7 +26,7 @@ export default function Newpost() {
         userProfile: user.photoURL,
         title: title,
         time: time,
-        postComments:[]
+        postComments: [],
       });
       await setDoc(doc(db, "posts", docRef.id), {
         likes: "0",
@@ -36,7 +38,7 @@ export default function Newpost() {
     }
   };
   return (
-    <div className="flex flex-col justify-center items-center">
+    <div className="flex flex-col justify-center items-center max-w-screen">
       <input
         className="w-full text-lg textarea-bordered textarea mb-2"
         placeholder="Title"
@@ -49,7 +51,12 @@ export default function Newpost() {
         className="textarea textarea-bordered textarea-lg w-full"
         onChange={(e) => setContent(e.target.value)}
       ></textarea>
-      <button className="p-5 m-5 border border-transparent hover:border hover:border-white hover:border-spacing-8 transition-all focus:bg-white focus:text-black bg-gray-800 rounded" onClick={NewThread}>Submit</button>
+      <button
+        className="p-5 m-5 border border-transparent hover:border hover:border-white hover:border-spacing-8 transition-all focus:bg-white focus:text-black bg-gray-800 rounded"
+        onClick={NewThread}
+      >
+        Submit
+      </button>
     </div>
   );
 }

@@ -29,8 +29,12 @@ export default function Navbar() {
       </div>
 
       <div className=" min-w-fit ">
-        <div className="dropdown dropdown-end md:block hidden">
-          {isUserAuthenticated ? <SearchBar small={false}></SearchBar> : <div></div>}
+        <div className="dropdown dropdown-end">
+          {isUserAuthenticated ? (
+            <SearchBar small={false}></SearchBar>
+          ) : (
+            <div></div>
+          )}
         </div>
         {isUserAuthenticated ? (
           <div className="dropdown dropdown-end ">
@@ -44,9 +48,8 @@ export default function Navbar() {
               className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
             >
               <li>
-                <a className="justify-between sm:hidden">
+                <a className="justify-between">
                   <SearchBar small={true}></SearchBar>
-                  
                 </a>
               </li>
               <li>

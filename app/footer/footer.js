@@ -1,7 +1,7 @@
 import {MdOutlineForum} from "react-icons/md"
 export default function Footer() {
   return (
-    <footer className="footer p-10 bg-neutral text-neutral-content">
+    <footer className="footer p-10 bg-black text-neutral-content flex justify-between flex-row">
   <div>
     <MdOutlineForum size={50}></MdOutlineForum>
     <p className="uppercase">college forums</p>

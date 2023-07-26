@@ -49,7 +49,7 @@ export default function Page({ params }) {
 
   return (
     <div class="antialiased mx-auto max-w-screen pt-20 min-h-screen">
-      <div class="space-y-4">
+      <div class="space-y-4 p-5">
         <div class="flex">
           <div class="flex-shrink-0 m-3">
             <img

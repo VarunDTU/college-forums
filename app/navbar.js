@@ -18,7 +18,7 @@ export default function Navbar() {
   };
 
   return (
-    <div className="navbar bg-base-100 absolute w-full flex flex-row justify-between">
+    <div className="navbar bg-[#12043a] shadow-md  absolute w-full flex flex-row justify-between">
       <div className="flex">
         <Link
           href={{ pathname: "/" }}

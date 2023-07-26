@@ -47,51 +47,33 @@ export default function Home() {
     Setvotes(false);
   };
   return (
-    <div className="py-20 flex flex-col ">
+    <div className="py-20 flex flex-col min-h-screen bg-slate-950  justify center items-center">
   
-      <div className="flex flex-col w-full lg:flex-row h-screen">
-        <div className=" sm:w-full  p-4  place-items-center">
-          <h1 className="p-5 m-2 w-full items-center justify-center flex text-3xl p">
+      <div className="flex flex-col w-full lg:flex-row h-full ">
+        <div className=" sm:w-full  p-4  place-items-center ">
+          <h1 className="p-5 m-1 w-full items-center justify-center flex text-3xl ">
             Top Threads
           </h1>
-          <div className=" h-full card bg-base-300 ">
+          <div className="   max-h-full overflow-y-scroll overflow-x-hidden border-2 m-2 scrollbar-thin scrollbar-thumb-blue-950 scrollbar-track-white ">
             {items.map((post) => {
               return (
-                <div className="text-left w-full p-2 hover:bg-slate-700 hover:rounded-box flex flex-row items-center transition-all ">
-                  {/* <div className=" flex flex-col items-center">
-                    {!upvotes ? (
-                      <BiUpvote
-                        size={20}
-                        className="m-2"
-                        onClick={upvoted}
-                      ></BiUpvote>
-                    ) : (
-                      <BiSolidUpvote
-                        size={20}
-                        className="m-2"
-                        onClick={downvoted}
-                      ></BiSolidUpvote>
-                    )}
-
-                    <div>{post.likes}</div>
-                  </div> */}
-
                   <Link href={{ pathname: `/posts/post/${post.id}` }}>
+                <div className="text-left w-full p-2 hover:bg-slate-700  flex flex-row items-center transition-all ">
                     {post.title}
-                  </Link>
                 </div>
+                  </Link>
               );
             })}
           </div>
         </div>
-        <div className="rounded-box place-items-center md:w-1/4 p-4 w-full">
-          <h1 className="p-5 m-2 w-full items-center justify-center flex text-3xl p">
+        <div className=" place-items-center md:w-1/4 p-4 w-full ">
+          <h1 className="p-6 w-full items-center justify-center flex text-xl">
             Recent Threads
           </h1>
-          <div className="  h-full card bg-base-300 place-items-center ">
+          <div className="   max-h-full overflow-y-scroll overflow-x-hidden border-2 m-2 scrollbar-thin scrollbar-thumb-blue-950 scrollbar-track-white">
             {itemsS.map((post) => {
               return (
-                <div className="text-left w-full p-2 hover:bg-slate-700 hover:rounded-box justify-center flex  transition-all ">
+                <div className="text-left w-full p-2 hover:bg-slate-700  transition-all ">
                   <Link href={{ pathname: `/posts/post/${post.id}` }}>
                     {post.title}
                   </Link>

@@ -29,8 +29,9 @@ export default function SearchBar(props) {
       </div> */}
       <div>
         <button
-          className="btn"
+          className="btn bg-transparent m-1 bordered border-slate-900"
           onClick={() => document.getElementById("my_modal_1").showModal()}
+
         >
           New Post
         </button>

@@ -1,37 +1,65 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-export default function Notice_section() {
-  //const response = await fetch(process.env.NEXT_PUBLIC_NOTICE_URL)
-  const [data, setData] = useState(null);
-  const [isLoading, setLoading] = useState(true);
-  const [posts, setPosts] = useState([]);
+import { Carousel } from "flowbite-react";
+import Link from "next/link";
 
-  const client = axios.create({
-    baseURL: "https://dtu-unofficial-api.hop.sh",
-  });
-  let config = {
-    method: "get",
-    maxBodyLength: Infinity,
-    url: "https://dtu-unofficial-api.hop.sh",
-    data: data,
-  };
+export default function Notice_section() {
+  const [isLoading, setIsLoading] = useState(true);
+  const [notices, setnotices] = useState([]);
+  var raw = "";
+
   useEffect(() => {
-    client
-      .request(config)
-      .then((response) => {
-        setPosts(response.data);
-        console.log(posts);
+    var requestOptions = {
+      method: "GET",
+      redirect: "follow",
+    };
+    fetch(process.env.NEXT_PUBLIC_NOTICE_URL, requestOptions)
+      .then((response) => response.json())
+      .then((result) => {
+        const x = result.slice(0, 10);
+        setnotices(x);
+        notices.sort((a, b) => {
+          return a.date > b.date;
+        });
+
+        if (result.length > 0) setIsLoading(false);
       })
-      .catch((error) => {
-        console.log(error);
-      });
+      .catch((error) => console.log("error", error));
   }, []);
 
   return (
-    <div className="w-screen h-60 bg-black flex items-center justify-center">
-      <button className="w-40 flex justify-center">
-        {isLoading ? <p>Loading...</p> : <p>No profile data</p>}
-      </button>
+    <div className="w-full h-60 bg-black flex items-center justify-center">
+      {isLoading ? (
+        <div className=" flex text-2xl items-center justify-center ">Loading....</div>
+      ) : (
+        <Carousel>
+          {notices.map((a) => {
+            return (
+              <div className="flex flex-col">
+                <div className="text-md flex items-center justify-center">
+                  {a.title}
+                </div>
+                <div className="flex flex-col items-center text-blue-800 ">
+                  {a.urls.map((links) => {
+                    return (
+                      <Link
+                        className="hover:text-purple-400 flex items-center justify-center"
+                        href={`${links}`}
+                      >
+                        {links}z
+                      </Link>
+                    );
+                  })}
+                </div>
+              </div>
+            );
+          })}
+        </Carousel>
+      )}
     </div>
   );
+}
+
+{
+  /* {isLoading ? <p>Loading...</p> : <div>{notices.slice(0,10).map((a)=>{return (<div>{a.title}</div>)})}</div>} */
 }

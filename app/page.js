@@ -49,14 +49,14 @@ export default function Home() {
   };
   return (
     <div className="py-20 flex flex-col min-h-screen bg-slate-950  justify center items-center">
-  
+  <h2 className=" flex justify-center text-3xl font-bold uppercase">Latest Notices</h2>
         <Notice_section></Notice_section>
       <div className="flex flex-col w-full lg:flex-row h-full ">
         <div className=" sm:w-full  p-4  place-items-center ">
           <h1 className="p-5 m-1 w-full items-center justify-center flex text-3xl ">
             Top Threads
           </h1>
-          <div className="   max-h-full overflow-y-scroll overflow-x-hidden border-2 m-2 scrollbar-thin scrollbar-thumb-blue-950 scrollbar-track-white ">
+          <div className="h-96  overflow-y-scroll overflow-x-hidden border-2 m-2 scrollbar-thin scrollbar-thumb-blue-950 scrollbar-track-white ">
             {items.map((post) => {
               return (
                   <Link href={{ pathname: `/posts/post/${post.id}` }}>
@@ -72,7 +72,7 @@ export default function Home() {
           <h1 className="p-6 w-full items-center justify-center flex text-xl">
             Recent Threads
           </h1>
-          <div className="   max-h-full overflow-y-scroll overflow-x-hidden border-2 m-2 scrollbar-thin scrollbar-thumb-blue-950 scrollbar-track-white">
+          <div className=" h-96   max-h-full overflow-y-scroll overflow-x-hidden border-2 m-2 scrollbar-thin scrollbar-thumb-blue-950 scrollbar-track-white">
             {itemsS.map((post) => {
               return (
                 <div className="text-left w-full p-2 hover:bg-slate-700  transition-all ">

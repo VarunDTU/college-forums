@@ -1,9 +1,9 @@
 "use client";
 import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { initfirebase } from "./firebase/auth";
+import { initfirebase } from "../../firebase/auth";
 import Link from "next/link";
-import SearchBar from "./components/search/searchBar";
+import SearchBar from "./searchBar";
 export default function Navbar() {
   initfirebase();
   const provider = new GoogleAuthProvider();

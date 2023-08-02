@@ -15,6 +15,7 @@ import {
 } from "firebase/firestore";
 import SearchBar from "./components/search/searchBar";
 import Newpost from "./newpost/newpost";
+import Notice_section from "./components/search/notices";
 
 export default function Home() {
   initfirebase();
@@ -49,6 +50,7 @@ export default function Home() {
   return (
     <div className="py-20 flex flex-col min-h-screen bg-slate-950  justify center items-center">
   
+        <Notice_section></Notice_section>
       <div className="flex flex-col w-full lg:flex-row h-full ">
         <div className=" sm:w-full  p-4  place-items-center ">
           <h1 className="p-5 m-1 w-full items-center justify-center flex text-3xl ">

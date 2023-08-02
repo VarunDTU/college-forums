@@ -1,3 +1,4 @@
+"use client"
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { Carousel } from "flowbite-react";
@@ -30,7 +31,7 @@ export default function Notice_section() {
   return (
     <div className="w-full h-60 bg-black flex items-center justify-center">
       {isLoading ? (
-        <div className=" flex text-2xl items-center justify-center ">Loading....</div>
+        <div className=" flex text-2xl items-center justify-center ">Loading Notices....</div>
       ) : (
         <Carousel>
           {notices.map((a) => {
